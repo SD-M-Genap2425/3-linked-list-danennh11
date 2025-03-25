@@ -4,7 +4,7 @@ namespace LinkedList.Inventori
 {
     public class Item
     {
-        public string? Nama{get;}
+        public string Nama{get;}
         public int Kuantitas{get;}
 
         public Item(string Nama, int Kuantitas)
@@ -41,7 +41,7 @@ namespace LinkedList.Inventori
             {
                 DaftarItem.Add($"{item.Nama}; {item.Kuantitas}");
             }
-            return string.Join("\n", DaftarItem);
+            return string.Join(Environment.NewLine, DaftarItem);
         }
     }
 }

@@ -17,13 +17,12 @@ namespace LinkedList.ManajemenKaryawan
     }
     public class KaryawanNode
     {
-        public Karyawan? Karyawan{get;}
-        public Karyawan Data;
+        public Karyawan Karyawan;
         public KaryawanNode? Next;
         public KaryawanNode? Prev;
-        public KaryawanNode(Karyawan Data)
+        public KaryawanNode(Karyawan Karyawan)
         {
-            this.Data = Data!;
+            this.Karyawan = Karyawan!;
             Next = null;
             Prev = null;
         }
@@ -62,7 +61,7 @@ namespace LinkedList.ManajemenKaryawan
 
             while(temp != null)
             {
-                if(temp.Data!.NomorKaryawan == nomorKaryawan)
+                if(temp.Karyawan!.NomorKaryawan == nomorKaryawan)
                 {
                     if (temp.Prev != null)
                     {
@@ -96,9 +95,9 @@ namespace LinkedList.ManajemenKaryawan
             KaryawanNode? temp = head;
             while(temp != null)
             {
-                if(temp.Data!.Nama!.Contains(kataKunci, StringComparison.OrdinalIgnoreCase) || temp.Data!.Posisi!.Contains(kataKunci, StringComparison.OrdinalIgnoreCase))
+                if(temp.Karyawan!.Nama!.Contains(kataKunci, StringComparison.OrdinalIgnoreCase) || temp.Karyawan!.Posisi!.Contains(kataKunci, StringComparison.OrdinalIgnoreCase))
                 {
-                    hasil.Add(temp.Data);
+                    hasil.Add(temp.Karyawan);
                 }
                 temp = temp.Next;
             }
@@ -106,13 +105,13 @@ namespace LinkedList.ManajemenKaryawan
         }
         public string TampilkanDaftar()
         {
-            KaryawanNode? temp = tail;
+            KaryawanNode? temp = head;
             List<string> DaftarKaryawan = new List<string>();
 
             while(temp != null)
             {
-                DaftarKaryawan.Add($"{temp.Data!.NomorKaryawan!}; {temp.Data!.Nama}; {temp.Data!.Posisi!}");
-                temp = temp.Prev;
+                DaftarKaryawan.Add($"{temp.Karyawan!.NomorKaryawan!}; {temp.Karyawan!.Nama}; {temp.Karyawan!.Posisi!}");
+                temp = temp.Next;
             }
             return string.Join("\n", DaftarKaryawan).Trim();
         }
